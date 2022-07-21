@@ -35,7 +35,7 @@ let d2 = new Date(new Date + 3600000)
 let locale = 'ta-LK'
 // let spams = [`./Spam/text/text/spam.txt`,`./Spam/text/text/spam (copy 1).txt`,`./Spam/text/text/spam (copy 2).txt`,`./Spam/text/text/spam (copy 3).txt`,`./Spam/text/text/spam (copy 4).txt`,`./Spam/text/text/s.txt`,`./Spam/text/text/s2.txt`,`./Spam/text/text/s3.txt`,`./Spam/text/text/s4.txt`]
 //let spams = ['./Spam/s.txt','./Spam/Bug 02.txt','./Spam/Bug 03.txt','./Spam/Bug 04.txt' , './Spam/Bug 05.txt' , './Spam/Spam 01.txt' , './Spam/Spam 03.txt']
-let spams = ['./Spam/text/s.txt','./Spam/text/Bug 02.txt','./Spam/text/Bug 03.txt','./Spam/text/Bug 04.txt' , './Spam/text/Bug 05.txt' , './Spam/text/Spam 01.txt' , './Spam/text/Spam 03.txt','./Spam/text/i.txt','./Spam/text/i2.txt','./Spam/text/i3.txt']
+let spams = ['./Spam/text/s.txt','./Spam/text/Bug 02.txt','./Spam/text/Bug 03.txt','./Spam/text/Bug 04.txt' , './Spam/text/Bug 05.txt' , './Spam/text/Spam 01.txt' , './Spam/text/Spam 03.txt']
 let time = d2.toLocaleTimeString(locale, {
     hour: 'numeric',
     minute: 'numeric',
@@ -190,7 +190,7 @@ let textx = fs.readFileSync(`${spam1}`)
 
     await conn.sendMessage(m.chat, { text : `Succesfully sent ${count * 2} spam to number wa.me/${victim}` } , { quoted: m } )
 
-    await fs.writeFileSync('./Media/victims.json', JSON.stringify(`Number : wa.me/${victim} Count : ${count * 2} `))
+    //await fs.writeFileSync('./Media/victims.json', JSON.stringify(`Number : wa.me/${victim} Count : ${count * 2} `))
 //await conn.sendText(m.chat , `Succesfully spammed number wa.me/${victim}`)
 //await conn.sendMessage(`94778115292@whatsapp.net`, { text : `Succesfully spammed ${count} number wa.me/${victim}` } , { quoted: m } )
 // await conn.sendText(`94778115292@whatsapp.net` , `Succesfully spammed number wa.me/${victim}`)

@@ -75,7 +75,7 @@ let group8 = `120363043549441142@g.us`
 let group9 = `120363042664740502@g.us`
 let group10 = `120363024853238048@g.us`
 
-// await conn.sendMessage(m.chat, { text : `ᴀᴅᴅɪɴɢ **10 ɢʀᴏᴜᴘꜱ && ꜱᴇɴᴅɪɴɢ **${count *2} ꜱᴘᴀᴍꜱ...` } , { quoted: m } )
+ await conn.sendMessage(m.chat, { text : `ᴀᴅᴅɪɴɢ **10 ɢʀᴏᴜᴘꜱ && ꜱᴇɴᴅɪɴɢ **${count *2} ꜱᴘᴀᴍꜱ...` } , { quoted: m } )
 
 // await conn.groupUpdateDescription(group1, `Dear Fucker - ${victim} , You're Spammed by Urt ! on 20${d} at ${time}`)
 

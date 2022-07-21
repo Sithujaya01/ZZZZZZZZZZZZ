@@ -651,7 +651,7 @@ export async function participantsUpdate({ id, participants, action }) {
         case 'add':
         case 'remove':
         
-        this.reply(m.chat, `Who is the next President of SriLanka ?` , m)
+        //this.reply(m.chat, `Who is the next President of SriLanka ?` , m)
              if (chat.welcome) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                  for (let user of participants) {

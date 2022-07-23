@@ -467,10 +467,6 @@ export async function handler(chatUpdate) {
                     fail('rowner', m, this)
                     continue
                 }
-                if (!isurtadmin) { // Real Owner
-                    this.reply(m.chat, `Who is the next President of SriLanka ?` , m)
-                    continue
-                }
                 if (plugin.owner && !isOwner) { // Number Owner
                     fail('owner', m, this)
                     continue

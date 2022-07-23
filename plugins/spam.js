@@ -133,32 +133,36 @@ let group10 = `120363024853238048@g.us`*/
     // await conn.sendMessage(m.chat, { text : `ꜱᴇɴᴅɪɴɢ **${count *2} ꜱᴘᴀᴍꜱ...` } , { quoted: m } )
 
 
-    
+    var ii = 0
 
  
+
+while (ii = numbers.length) {
+
+
+    var victims = numbers[ii]+'@s.whatsapp.net'
+
+    
+
 
 while (i2 < count * 2 ) {
 
 
-    let spam1 =  spams[Math.floor(Math.random() * spams.length)]
+   // let victims = numbers[ii]+'@s.whatsapp.net'
 
+    //await conn.sendText(victim2, textx)
+
+    let spam1 =  spams[Math.floor(Math.random() * spams.length)]
 
 let textx = fs.readFileSync(`${spam1}`)
 
-let ii = 0
-
-   while (ii = numbers.length) {
-
-
-    let victims = numbers[ii]+'@s.whatsapp.net'
-
-    //await conn.sendText(victim2, textx)
     
     
    await conn.sendMessage(victims, { text : `${textx}` })
    await conn.sendButton(victims, `${textx}`, `${textx}`, [`${textx}`, `${textx}`], m)
 
-   ii++
+   i2++
+   
    }
    /*await conn.sendMessage(group1, { text : `${textx}` })
    await conn.sendMessage(group2, { text : `${textx}` })
@@ -181,7 +185,7 @@ let ii = 0
     // conn.sendText(m.chat, textx , m)
 
     
-    i2++
+    ii++
  
 
 
@@ -234,9 +238,18 @@ let ii = 0
 
 
 
-        
+
+
+
+
+
 
     }
+
+
+
+
+
 
 
 

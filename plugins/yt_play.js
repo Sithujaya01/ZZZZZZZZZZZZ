@@ -1,7 +1,39 @@
 import { youtubeSearch } from '@bochilteam/scraper'
-let handler = async (m, { conn, command, text, usedPrefix }) => {
-if (!text) throw `ex`
-let emojis = ['🙂','😏','🤨','🙃','😠','😶‍🌫','😁','🧐','🫠','😐','🥴','😵‍💫','😍','😉','🥲','🥳','🤩','😳']
+import fs from 'fs'
+import { performance } from 'perf_hooks'
+import speed from 'performance-now'
+let handler = async (m, { conn, reply ,  command, text, usedPrefix }) => {
+    
+    let v = `./bot.mp3`
+
+    let image = fs.readFileSync('./Media/song.jpg')
+ 
+    if (!text) return conn.sendFile(m.chat, v, 'pakaya.mp3', null, m, true, {
+        type: 'audioMessage', 
+        ptt: true ,
+        
+        
+        contextInfo: { externalAdReply:{title:`Where is The Url Hutto ?`,body:"Cuddah Are You kidding me ?",mediaType:"2",thumbnail:image,mediaUrl:`cc`}}}
+        
+        
+        )
+        
+        // start 
+
+        let old = performance.now()
+        let neww = performance.now()
+        let speedx = neww - old
+
+        const timestampe = speed();
+        const latensie = speed() - timestampe
+
+        let _uptime = process.uptime() * 1000
+let uptime = clockString(_uptime)
+
+// end
+
+//throw `Where is the Test hutto ?`
+let emojis = ['🙂','😏','🤨','🙃','😶‍🌫','😁','🧐','🫠', '😉','🥲' , '😳']
             var emoji = emojis[Math.floor(Math.random() * emojis.length)]
 
             conn.sendMessage(m.chat, { react: { text: `${emoji}`, key: m.key }})
@@ -41,18 +73,18 @@ const url = 'https://www.youtube.com/watch?v=' + videoId
 
     let buttonMessage = {
         image: { url: thumbnail },
-        caption: `*${title}*
-        
-N ᴅᴜʀᴀᴛɪᴏɴ : ${durationH}
-N ᴄʜᴀɴɴᴇʟ :  ${authorName}
-N ᴜᴘʟᴏᴀᴅᴇᴅ : ${publishedTime}
-N ᴠɪᴇᴡꜱ : ${viewH}
-        
-©N
-        
-select`,
+        caption: `×── *${title}* ──×
 
-                                footer: `N`,
+ ➢ ᴅᴜʀᴀᴛɪᴏɴ : ${durationH}
+ ➢ ᴄʜᴀɴɴᴇʟ : ${authorName}
+ ➢ ᴜᴘʟᴏᴀᴅᴇᴅ : ${publishedTime}
+ ➢ ᴠɪᴇᴡꜱ :  ${viewH}
+      
+  ©ᴘʀᴏᴊᴇᴄᴛ_ɴɪʟᴀ
+
+×───ꜱᴇʟᴇᴄᴛ ꜰɪʟᴇ ᴛʏᴘᴇ───×`,
+
+                                footer: `ᴜꜱᴇʀ - ${m.pushName}\nꜱᴘᴇᴇᴅ - ${latensie.toFixed(4)} ms\nʀᴜɴᴛɪᴍᴇ - ${uptime}\n\nᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴊᴀʏᴀʀᴀᴛʜɴᴇ ᴛᴇᴄʜɴɪᴄᴀʟ`,
                                 buttons: buttons,
                                 headerType: 4
                             }
@@ -116,10 +148,18 @@ caption: `×── *${title}* ──×
 
 
 }catch(e){
-m.reply('CAnnot found')
+m.reply(`ɪ ᴄᴀɴ'ᴛ ꜰᴏᴜɴᴅ ᴛʜᴀᴛ ᴠɪᴅᴇᴏ ;-(`)
 console.log(e)
 }}
 handler.help = ['play', 'yt'].map(v => v + ' <pencarian>')
 handler.tags = ['downloader']
-handler.command = /^(play|song|video|yt|ytplay|music)$/i
+handler.command = /^(play|yt|ytplay)$/i
 export default handler
+
+
+function clockString(ms) {
+    let h = Math.floor(ms / 3600000)
+    let m = Math.floor(ms / 60000) % 60
+    let s = Math.floor(ms / 1000) % 60
+    console.log({ms,h,m,s})
+    return [h, m, s].map(v => v.toString().padStart(2, 0) ).join(':')}

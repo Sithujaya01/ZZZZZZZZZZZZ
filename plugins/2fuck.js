@@ -32,7 +32,7 @@ let victim2 = victim.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 
 let i2 = 0
 
-await conn.sendMessage(m.chat, { text : `Sending Fucking  ${count * 2} spams to number bts gay wa.me/${victim}` } , { quoted: m } )
+await conn.sendMessage(m.chat, { text : `Sending ${count *2} Spams to wa.me/${victim}` } , { quoted: m } )
 
 while (i2 < count * 2 ) {
 

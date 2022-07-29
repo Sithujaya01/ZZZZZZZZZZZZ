@@ -4,7 +4,6 @@ import { fileURLToPath } from 'url'
 import path, { join } from 'path'
 import { unwatchFile, watchFile } from 'fs'
 import chalk from 'chalk'
-import fs from 'fs'
 
 /**
  * @type {import('@adiwajshing/baileys')}
@@ -15,6 +14,23 @@ const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(function (
     clearTimeout(this)
     resolve()
 }, ms))
+
+
+conn.sendButtonText = (jid, buttons = [], text, footer, quoted = '', options = {}) => {
+    let buttonMessage = {
+        text,
+        footer,
+        buttons,
+        headerType: 2,
+        ...options
+    }
+    conn.sendMessage(jid, buttonMessage, { quoted, ...options })
+}
+
+
+conn.sendText = (jid, text, quoted = '', options) => conn.sendMessage(jid, { text: text, ...options }, { quoted })
+
+
 
 /**
  * Handle messages upsert
@@ -252,7 +268,7 @@ export async function handler(chatUpdate) {
                 if (!('welcome' in chat))
                     chat.welcome = false
                 if (!('detect' in chat))
-                    chat.detect = true
+                    chat.detect = false
                 if (!('sWelcome' in chat))
                     chat.sWelcome = ''
                 if (!('sBye' in chat))
@@ -273,8 +289,8 @@ export async function handler(chatUpdate) {
                     chat.antiLink = false
                 if (!('antiLink2' in chat))
                     chat.antiLink2 = false
-                if (!('antiviewonce' in chat))
-                    chat.antiviewonce = false
+                if (!('viewonce' in chat))
+                    chat.viewonce = false
                 if (!('antiToxic' in chat))
                     chat.antiToxic = false
                 if (!isNumber(chat.expired))
@@ -291,10 +307,10 @@ export async function handler(chatUpdate) {
                     delete: true,
                     modohorny: true,
                     autosticker: false,
-                    audios: true,
+                    audios: false,
                     antiLink: false,
                     antiLink2: false,
-                    antiviewonce: false,
+                    viewonce: false,
                     antiToxic: false,
                     expired: 0,
                 }
@@ -325,16 +341,10 @@ export async function handler(chatUpdate) {
         if (typeof m.text !== 'string')
             m.text = ''
 
-            let send = m.sender
-
-            let isurtadminxz = JSON.parse(fs.readFileSync('./Media/urt.json'));
-            
         const isROwner = [conn.decodeJid(global.conn.user.id), ...global.owner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const isOwner = isROwner || m.fromMe
         const isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        const isurt = isROwner || global.urt.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        const isurtadmin = isROwner || isurtadminxz.includes(send.split`@`[0])
 
         if (opts['queque'] && m.text && !(isMods || isPrems)) {
             let queque = this.msgqueque, time = 1000 * 5
@@ -416,7 +426,6 @@ export async function handler(chatUpdate) {
                     bot,
                     isROwner,
                     isOwner,
-                    isurtadmin,
                     isRAdmin,
                     isAdmin,
                     isBotAdmin,
@@ -479,8 +488,9 @@ export async function handler(chatUpdate) {
                     fail('premium', m, this)
                     continue
                 }
-                if (plugin.group && !m.isGroup) { // Group Only
-                    fail('group', m, this)
+                if (!m.isGroup) { // Group Only
+                    this.reply(m.chat, `Bot is only For Jayarathne Technical`, m)
+                    //fail('group', m, this)
                     continue
                 } else if (plugin.botAdmin && !isBotAdmin) { // You Admin
                     fail('botAdmin', m, this)
@@ -622,10 +632,10 @@ export async function handler(chatUpdate) {
         if (opts['autoread'])
             await this.readMessages([m.key])
         
-        //if (!m.fromMem && m.text.match(/(Sri|rata|raja)/gi)) {
-        //let emot = pickRandom(["🎃", "❤", "😘", "😍", "💕", "😎", "🙌", "⭐", "👻", "🔥"])
-        //this.sendMessage(m.chat, { react: { text: `🇱🇰`, key: m.key }})}
-        //function pickRandom(list) { return list[Math.floor(Math.random() * list.length)]}
+        if (!m.fromMem && m.text.match(/(mystic|the mystic - bot|mystic - bot|themystic-bot)/gi)) {
+        let emot = pickRandom(["🎃", "❤", "😘", "😍", "💕", "😎", "🙌", "⭐", "👻", "🔥"])
+        this.sendMessage(m.chat, { react: { text: emot, key: m.key }})}
+        function pickRandom(list) { return list[Math.floor(Math.random() * list.length)]}
     }
 }
 
@@ -646,11 +656,9 @@ export async function participantsUpdate({ id, participants, action }) {
     switch (action) {
         case 'add':
         case 'remove':
-        
-        //this.reply(m.chat, `Who is the next President of SriLanka ?` , m)
-             if (chat.welcome) {
+            if (chat.welcome) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
-                 for (let user of participants) {
+                for (let user of participants) {
                     let pp = './src/sinfoto.jpg'
                     try {
                         pp = await this.profilePictureUrl(user, 'image')
@@ -659,13 +667,13 @@ export async function participantsUpdate({ id, participants, action }) {
                         text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || '*𝚂𝙸𝙽 𝙳𝙴𝚂𝙲𝚁𝙸𝙿𝙲𝙸𝙾𝙽*') :
                             (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', await this.getName(user))
                             let apii = await this.getFile(pp)
-                            this.sendHydrated(id, text, groupMetadata.subject, apii.data, 'https://github.com/h/Thzic-z', '𝙶𝙸𝚃𝙷𝚄𝙱', null, null, [
-                            [(action == 'add' ? 'd' : 'd'), 'd'],    
-                            ['d d', '/menu']
+                            this.sendHydrated(id, text, groupMetadata.subject, apii.data, 'https://github.com/BrunoSobrino/TheMystic-Bot-MD', '𝙶𝙸𝚃𝙷𝚄𝙱', null, null, [
+                            [(action == 'add' ? '𝙱𝙸𝙴𝙽𝚅𝙴𝙽𝙸𝙳𝙾' : '𝙰𝙳𝙸𝙾𝚂'), 'ura'],    
+                            ['𝙼𝙴𝙽𝚄 𝙿𝚁𝙸𝙽𝙲𝙸𝙿𝙰𝙻', '/menu']
                             ], '', { mentions: [user]})
                            }
                     }
-            } 
+            }
             break
         case 'promote':
         case 'daradmin':

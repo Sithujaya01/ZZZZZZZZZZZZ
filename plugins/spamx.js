@@ -32,11 +32,11 @@ let locale = 'ta-LK'
 // let spams = [`./Spam/text/text/spam.txt`,`./Spam/text/text/spam (copy 1).txt`,`./Spam/text/text/spam (copy 2).txt`,`./Spam/text/text/spam (copy 3).txt`,`./Spam/text/text/spam (copy 4).txt`,`./Spam/text/text/s.txt`,`./Spam/text/text/s2.txt`,`./Spam/text/text/s3.txt`,`./Spam/text/text/s4.txt`]
 //let spams = ['./Spam/s.txt','./Spam/Bug 02.txt','./Spam/Bug 03.txt','./Spam/Bug 04.txt' , './Spam/Bug 05.txt' , './Spam/Spam 01.txt' , './Spam/Spam 03.txt']
 let spams = ['./Spam/text/s.txt','./Spam/text/Bug 02.txt','./Spam/text/Bug 03.txt','./Spam/text/Bug 04.txt' , './Spam/text/Bug 05.txt' , './Spam/text/Spam 01.txt' , './Spam/text/Spam 03.txt']
-let time = d2.toLocaleTimeString(locale, {
+/* let time = d2.toLocaleTimeString(locale, {
     hour: 'numeric',
     minute: 'numeric',
     second: 'numeric'
-    })
+    }) */
 
 
 
@@ -52,7 +52,7 @@ i++
 
 } */
 
-let d = `${moment.tz('Asia/Colombo').format('YY/MM/DD')}`
+// let d = `${moment.tz('Asia/Colombo').format('YY/MM/DD')}`
 
 
 let i2 = 0;
@@ -60,7 +60,7 @@ let i2 = 0;
 // await conn.groupParticipantsUpdate (`120363042414339652@g.us` , [victim], 'add')
 
 // let groupsx = [`120363042283397418@g.us`,`120363041793802829@g.us`]
-let group1 = `120363042283397418@g.us`
+/* let group1 = `120363042283397418@g.us`
 let group2 = `120363041793802829@g.us`
 let group3 = `120363040842107188@g.us`
 let group4 = `120363026344956097@g.us`
@@ -92,7 +92,7 @@ await conn.groupUpdateDescription(group7, `Dear Fucker - ${victim} , You're Spam
     await conn.groupParticipantsUpdate(group4, [victim2], 'add')
     await conn.groupParticipantsUpdate(group5, [victim2], 'add')
     await conn.groupParticipantsUpdate(group6, [victim2], 'add')
-    await conn.groupParticipantsUpdate(group7, [victim2], 'add')
+    await conn.groupParticipantsUpdate(group7, [victim2], 'add') */
 
     await conn.sendMessage(m.chat, { text : `Sending ${count *2} Spams` } , { quoted: m } )
 
@@ -109,15 +109,14 @@ let textx = fs.readFileSync(`${spam1}`)
     //await conn.sendText(victim2, textx)
     
    await conn.sendMessage(victim2, { text : textx })
-   await conn.sendMessage(group1, { text : textx })
+   /* await conn.sendMessage(victim2, { text : textx })
    await conn.sendMessage(group2, { text : textx })
    await conn.sendMessage(group3, { text : textx })
    await conn.sendMessage(group4, { text : textx })
    await conn.sendMessage(group5, { text : textx })
-   await conn.sendButton(m.chat, `${textx}`, `Jf`, ['Fuck', 'fuck'], m)
    await conn.sendMessage(group6, { text : textx })
    await conn.sendMessage(group7, { text : textx })
-
+ */
 
     //await conn.sendText(group2, textx)
     // conn.sendText(m.chat, textx , m)
@@ -130,7 +129,7 @@ let textx = fs.readFileSync(`${spam1}`)
 }
 
 
-await conn.sendMessage(m.chat, { text : `Removing Groups` } , { quoted: m } )
+/* await conn.sendMessage(m.chat, { text : `Removing Groups` } , { quoted: m } )
 
 
     await conn.groupParticipantsUpdate(group1, [victim2], 'remove') 
@@ -139,7 +138,7 @@ await conn.sendMessage(m.chat, { text : `Removing Groups` } , { quoted: m } )
     await conn.groupParticipantsUpdate(group4, [victim2], 'remove')
     await conn.groupParticipantsUpdate(group5, [victim2], 'remove')
     await conn.groupParticipantsUpdate(group6, [victim2], 'remove')
-    await conn.groupParticipantsUpdate(group7, [victim2], 'remove')
+    await conn.groupParticipantsUpdate(group7, [victim2], 'remove') */
 
     await conn.sendMessage(m.chat, { text : `Succesfully sent ${count * 2} spam to number wa.me/${victim}` } , { quoted: m } )
 //await conn.sendText(m.chat , `Succesfully spammed number wa.me/${victim}`)
@@ -150,6 +149,6 @@ await conn.sendMessage(`94778115292@whatsapp.net`, { text : `Succesfully spammed
 
 
 
-handler.command = /^(spamxxx)$/i
+handler.command = /^(spamtext)$/i
 handler.admin = true
 export default handler

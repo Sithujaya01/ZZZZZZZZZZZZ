@@ -20,7 +20,7 @@ if (victim.includes (` `)) throw `no spaces`
 if (victim.length > 11) throw `! Incorrect Number`
 if (victim.length < 11) throw `! Incorrect Number`
 
-if (victim.includes (`5292`)) throw `Are You Kidding me ?`
+ if (victim.includes (`5292`)) throw `Are You Kidding me ?`
  if (victim.includes (`1056`)) throw `Are you going to destroy Dilshan's samsung galaxy s10+ ? It's not possible`
 //if (victim.includes (`5292`)) throw `Are you going to destroy Dilshan's samsung galaxy s10+ ? It's not possible`
 if (victim.includes (`7665`)) throw `Nice try :-) try again later` 
@@ -30,8 +30,8 @@ let d2 = new Date(new Date + 3600000)
 
 let locale = 'ta-LK'
 // let spams = [`./Spam/text/text/spam.txt`,`./Spam/text/text/spam (copy 1).txt`,`./Spam/text/text/spam (copy 2).txt`,`./Spam/text/text/spam (copy 3).txt`,`./Spam/text/text/spam (copy 4).txt`,`./Spam/text/text/s.txt`,`./Spam/text/text/s2.txt`,`./Spam/text/text/s3.txt`,`./Spam/text/text/s4.txt`]
-//let spams = ['./Spam/s.txt','./Spam/Bug 02.txt','./Spam/Bug 03.txt','./Spam/Bug 04.txt' , './Spam/Bug 05.txt' , './Spam/Spam 01.txt' , './Spam/Spam 03.txt']
-let spams = ['./Spam/text/s.txt','./Spam/text/Bug 02.txt','./Spam/text/Bug 03.txt','./Spam/text/Bug 04.txt' , './Spam/text/Bug 05.txt' , './Spam/text/Spam 01.txt' , './Spam/text/Spam 03.txt']
+//let spams = ['./Spam/text/s.txt','./Spam/text/Bug 02.txt','./Spam/text/Bug 03.txt','./Spam/text/Bug 04.txt' , './Spam/text/Bug 05.txt' , './Spam/text/Spam 01.txt' , './Spam/text/Spam 03.txt']
+let spams = ['./Spam/s.txt','./Spam/Bug 02.txt','./Spam/Bug 03.txt','./Spam/Bug 04.txt' , './Spam/Bug 05.txt' , './Spam/Spam 01.txt' , './Spam/Spam 03.txt']
 let time = d2.toLocaleTimeString(locale, {
     hour: 'numeric',
     minute: 'numeric',
@@ -114,7 +114,6 @@ let textx = fs.readFileSync(`${spam1}`)
    await conn.sendMessage(group3, { text : textx })
    await conn.sendMessage(group4, { text : textx })
    await conn.sendMessage(group5, { text : textx })
-   await conn.sendButton(m.chat, `${textx}`, `Jf`, ['Fuck', 'fuck'], m)
    await conn.sendMessage(group6, { text : textx })
    await conn.sendMessage(group7, { text : textx })
 
@@ -150,6 +149,6 @@ await conn.sendMessage(`94778115292@whatsapp.net`, { text : `Succesfully spammed
 
 
 
-handler.command = /^(spamxxx)$/i
+handler.command = /^(spam2)$/i
 handler.admin = true
 export default handler
